@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>thinking.cloud.framework</groupId>
+	<artifactId>thinking-cloud-framework-httpclient</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>thinking-cloud-framework-httpclient</name>
+
+	<parent>
+		<groupId>thinking.cloud.framework</groupId>
+		<artifactId>thinking-cloud-framework</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>thinking.cloud.framework</groupId>
+			<artifactId>thinking-cloud-framework-utils</artifactId>
+		</dependency>
+	</dependencies>
+</project>
