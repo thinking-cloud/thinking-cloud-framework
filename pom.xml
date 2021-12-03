@@ -167,7 +167,6 @@
 		<module>thinking-cloud-framework-utils</module>
 		<module>thinking-cloud-framework-core</module>
 		<module>thinking-cloud-framework-beans</module>
-		<module>thinking-cloud-framework-services</module>
 		<module>thinking-cloud-framework-api</module>
 		<module>thinking-cloud-framework-web</module>
 		<module>thinking-cloud-framework-httpclient</module>
