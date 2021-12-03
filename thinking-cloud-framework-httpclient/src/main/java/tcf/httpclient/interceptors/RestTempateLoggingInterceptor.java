@@ -30,6 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class RestTempateLoggingInterceptor implements ClientHttpRequestInterceptor {
+
 	/**
 	 * 打印请求信息
 	 * 
@@ -38,6 +39,7 @@ public class RestTempateLoggingInterceptor implements ClientHttpRequestIntercept
 	 * @throws IOException
 	 */
 	private void traceRequest(HttpRequest request, byte[] body) throws IOException {
+		
 		log.debug("===========================request begin================================================");
 		log.debug("{} {}", request.getMethod(), request.getURI());
 		for (Entry<String, List<String>> header : request.getHeaders().entrySet()) {

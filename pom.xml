@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>thinking.cloud.framework</groupId>
 	<artifactId>thinking-cloud-framework</artifactId>
@@ -50,8 +52,8 @@
 				<version>${thinking.cloud.framework.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>thinking.cloud</groupId>
-				<artifactId>thinking-cloud-rest</artifactId>
+				<groupId>thinking.cloud.framework</groupId>
+				<artifactId>thinking-cloud-framework-httpclient</artifactId>
 				<version>${thinking.cloud.framework.version}</version>
 			</dependency>
 			<dependency>
@@ -166,8 +168,8 @@
 		<module>thinking-cloud-framework-core</module>
 		<module>thinking-cloud-framework-beans</module>
 		<module>thinking-cloud-framework-services</module>
-    <module>thinking-cloud-framework-api</module>
-    <module>thinking-cloud-framework-web</module>
-    <module>thinking-cloud-framework-httpclient</module>
+		<module>thinking-cloud-framework-api</module>
+		<module>thinking-cloud-framework-web</module>
+		<module>thinking-cloud-framework-httpclient</module>
 	</modules>
 </project>
