@@ -2,6 +2,10 @@ package tcf.beans.entity;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import tcf.beans.annotation.IgnoreSwaggerParameter;
+
 /**
  * 所有model类都要实现的接口
  * 

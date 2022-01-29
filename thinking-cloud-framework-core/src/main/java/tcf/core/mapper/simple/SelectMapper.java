@@ -1,6 +1,7 @@
 package tcf.core.mapper.simple;
 
 import java.io.Serializable;
+import java.util.List;
 
 import tcf.beans.entity.Entity;
 import tcf.core.mapper.Mapper;
@@ -22,5 +23,12 @@ public interface SelectMapper<PK extends Serializable, T extends Entity<PK>> ext
 	 * @return 查询到的对象
 	 */
 	public T selectById(PK id);
+	
+	/**
+	 * 根据主键列表查询
+	 * @param pk 主键
+	 * @return 查询到的对象
+	 */
+	public List<T> selectByIds(Iterable<PK> ids);
 }
 

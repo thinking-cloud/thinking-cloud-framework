@@ -21,7 +21,6 @@ public interface DeleteMapper<PK extends Serializable, T extends Entity<PK>> ext
 	 * 根据主键删除
 	 * @param pk 要删除的主键
 	 * @return 影响条数
-	 * @throws Exception SQL异常
 	 */
 	public int deleteById(PK id);
 	
@@ -29,7 +28,6 @@ public interface DeleteMapper<PK extends Serializable, T extends Entity<PK>> ext
 	 * 根据条件，删除对象
 	 * @param entity 要删除的主键
 	 * @return 影响条数
-	 * @throws Exception SQL异常
 	 */
 	public int delete(T entity);
 }

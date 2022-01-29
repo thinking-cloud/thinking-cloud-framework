@@ -3,6 +3,9 @@ package tcf.beans.page;
 import java.util.LinkedList;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 
 /**
  * 分页对象
@@ -12,16 +15,21 @@ import java.util.List;
  * @date 2021年11月29日
  * @version 1.0.0
  */
+@ApiModel(value ="Page", description = "分页对象")
 public class Page<T> {
 
 	private static final long serialVersionUID = -3146313205433588374L;
-	/** 当前页码 */
+	
+	@ApiModelProperty("当前页码")
 	private Integer pageNo=Limit.DEFAULT_PAGE_N0;
-	/** 每页显示的条数 */
+
+	@ApiModelProperty("每页显示的条数")
 	private Integer pageSize=Limit.DEFAULT_PAGE_SIZE;
-	/** 本页记录 */
+	
+	@ApiModelProperty("本页记录")
 	private List<T> records;
-	/** 总记录数 */
+	
+	@ApiModelProperty("总记录数")
 	private Long totalRecord;
 
 	/**

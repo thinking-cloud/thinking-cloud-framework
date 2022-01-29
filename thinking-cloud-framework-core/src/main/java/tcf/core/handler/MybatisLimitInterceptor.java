@@ -135,8 +135,10 @@ public class MybatisLimitInterceptor implements Interceptor {
 		List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
 		
 		// 改造为获取总数的sql对象
+		//计算截取开始索引
 		int index = sql.indexOf("from");
 		index = index==-1 ? sql.indexOf("FROM") : index;
+		// 整理截取到的sql - 无查询条件去除 WHERE
 		String countSql ="select count(*) " + sql.substring(index);
 		BoundSql countBoundSql = new BoundSql(mappedStatement.getConfiguration(), countSql, parameterMappings, limit);
 		ParameterHandler parameterHandler = new DefaultParameterHandler(mappedStatement, limit, countBoundSql);

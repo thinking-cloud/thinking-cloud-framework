@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Data
 @Slf4j
-@ConfigurationProperties(prefix = "thinking.cloud.filter.excluded")
+@ConfigurationProperties(prefix = "tcf.filter.excluded")
 public abstract class ThinkingCloudBaseFilter implements Filter {
 	
 	private static final String ATTRIVBUTE_KEY_EXCLUDED_URL_FLAG= "IS_EXCLUDED_URL";

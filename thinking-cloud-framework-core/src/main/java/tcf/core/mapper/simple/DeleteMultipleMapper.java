@@ -16,7 +16,7 @@ import tcf.core.mapper.Mapper;
  * @date 2021年11月29日
  * @version 1.0.0
  */
-public interface BatchDeleteMapper<PK extends Serializable, T extends Entity<PK>> extends Mapper<PK, T> {
+public interface DeleteMultipleMapper<PK extends Serializable, T extends Entity<PK>> extends Mapper<PK, T> {
 		
 	/**
 	 * 根据ID列表，批量物理删除

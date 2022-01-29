@@ -1,6 +1,8 @@
 package tcf.core.services.simple;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 import tcf.beans.entity.Entity;
 
@@ -22,4 +24,12 @@ public interface SelectService<PK extends Serializable,T extends Entity<PK>> {
 	 * @return 查询结果
 	 */
 	public T selectByPK(PK id);
+	
+	/**
+	 * 根据主键查询
+	 * 
+	 * @param 主键
+	 * @return 查询结果
+	 */
+	public List<T> selectByPKeys(Collection<PK> ids);
 }

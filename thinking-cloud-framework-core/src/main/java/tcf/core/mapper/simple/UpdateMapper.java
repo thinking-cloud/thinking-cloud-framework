@@ -19,7 +19,6 @@ public interface UpdateMapper<PK extends Serializable, T extends Entity<PK>> ext
 	 * 根据主键修改数据
 	 * @param t 查询条件与修改的值
 	 * @return 影响行数
-	 * @throws Exception SQL异常
 	 */
 	public int update(T t);
 

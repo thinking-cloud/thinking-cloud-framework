@@ -2,7 +2,6 @@ package tcf.core.services.simple;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import tcf.beans.entity.Entity;
 
@@ -15,7 +14,7 @@ import tcf.beans.entity.Entity;
  * @date 2021年11月29日
  * @version 1.0.0
  */
-public interface BatchDeleteService<PK extends Serializable, T extends Entity<PK>> {
+public interface DeleteMultipleService<PK extends Serializable, T extends Entity<PK>> {
 	
 	/**
 	 * 根据ID列表，批量删除
@@ -23,6 +22,6 @@ public interface BatchDeleteService<PK extends Serializable, T extends Entity<PK
 	 * @param id列表
 	 * @return 影响行数
 	 */
-	public long deleteByIds(Iterable<PK> batch);
+	public long deleteByIds(Collection<PK> batch);
 	
 }

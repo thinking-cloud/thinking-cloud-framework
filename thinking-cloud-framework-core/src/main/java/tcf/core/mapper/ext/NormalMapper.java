@@ -3,6 +3,7 @@ package tcf.core.mapper.ext;
 import java.io.Serializable;
 
 import tcf.beans.entity.Entity;
+import tcf.core.mapper.simple.CountMapper;
 import tcf.core.mapper.simple.PageMapper;
 
 /**
@@ -17,6 +18,6 @@ import tcf.core.mapper.simple.PageMapper;
  * @version 1.0.0
  */
 public interface NormalMapper<PK extends Serializable, T extends Entity<PK>> 
-	extends SimpleMapper<PK, T>, PageMapper<PK, T>{
+	extends SimpleMapper<PK, T>, PageMapper<PK, T>, CountMapper<PK, T>{
 	
 }

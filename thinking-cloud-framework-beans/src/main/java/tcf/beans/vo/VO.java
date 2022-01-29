@@ -16,6 +16,7 @@ public abstract class VO<T> implements Serializable {
 	private static final long serialVersionUID = -5665832561306399527L;
 	
 	protected T source;
+	
 
 	@SuppressWarnings("unchecked")
 	public <V extends VO<T>> V convert(T source) {

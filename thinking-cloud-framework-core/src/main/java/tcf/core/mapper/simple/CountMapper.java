@@ -21,7 +21,6 @@ public interface CountMapper <PK extends Serializable, T extends Entity<PK>> ext
 	 * 查询总数
 	 * @param limit 查询条件
 	 * @return 总数
-	 * @throws Exception SQK异常
 	 */
-	public Long count(Limit limit);
+	public Long count(T entity);
 }

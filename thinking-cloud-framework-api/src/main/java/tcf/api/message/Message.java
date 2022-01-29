@@ -1,5 +1,7 @@
 package tcf.api.message;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,15 +20,16 @@ import tcf.api.constant.MESSAGE;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel(value = "Message", description = "响应对象")
 public class Message<T> {
-	
-	/** 时间戳 */
+
+	@ApiModelProperty("时间戳")
 	private Long timestamp=System.currentTimeMillis();
-	/** 响应码 */
+	@ApiModelProperty("响应码")
 	private String code;
-	/** 响应消息 */
+	@ApiModelProperty("响应信息")
 	private String msg;
-	/** 响应数据 */
+	@ApiModelProperty("响应数据")
 	private T data;
 	
 	/**

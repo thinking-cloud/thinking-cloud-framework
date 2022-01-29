@@ -1,34 +1,30 @@
 package tcf.core.services;
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
 import tcf.beans.entity.Entity;
-import tcf.beans.entity.LogicalDeletion;
 import tcf.beans.entity.Timestamp;
-import tcf.beans.enums.STATE;
 import tcf.beans.page.Limit;
 import tcf.beans.page.Page;
 import tcf.core.exception.ServicesException;
 import tcf.core.mapper.Mapper;
-import tcf.core.mapper.simple.BatchDeleteMapper;
-import tcf.core.mapper.simple.BatchInsertMapper;
 import tcf.core.mapper.simple.CountMapper;
 import tcf.core.mapper.simple.DeleteMapper;
+import tcf.core.mapper.simple.DeleteMultipleMapper;
 import tcf.core.mapper.simple.InsertMapper;
+import tcf.core.mapper.simple.InsertMultipleMapper;
 import tcf.core.mapper.simple.PageMapper;
 import tcf.core.mapper.simple.SelectMapper;
 import tcf.core.mapper.simple.UpdateMapper;
-import tcf.core.services.simple.BatchDeleteService;
-import tcf.core.services.simple.BatchInsertService;
 import tcf.core.services.simple.CountService;
+import tcf.core.services.simple.DeleteMultipleService;
 import tcf.core.services.simple.DeleteService;
+import tcf.core.services.simple.InsertMultipleService;
 import tcf.core.services.simple.InsertService;
 import tcf.core.services.simple.LimitService;
 import tcf.core.services.simple.SelectService;
@@ -53,15 +49,15 @@ import tcf.core.services.simple.UpdateService;
  * @date 2021年11月29日
  * @version 1.0.0
  */
-public abstract class ServiceAbs<PK extends Serializable, T extends Entity<PK>> implements 
+public abstract class BaseService<PK extends Serializable, T extends Entity<PK>> implements 
 																				InsertService<PK, T>,
-																				BatchInsertService<PK, T>,
+																				InsertMultipleService<PK, T>,
 																				DeleteService<PK, T>,
-																				BatchDeleteService<PK, T>,
+																				DeleteMultipleService<PK, T>,
 																				UpdateService<PK,T>,
 																				SelectService<PK, T>,
 																				LimitService<PK,T>,
-																				CountService{
+																				CountService<PK,T>{
 
 	/**
 	 * 获取mapper接口的实现类
@@ -81,14 +77,13 @@ public abstract class ServiceAbs<PK extends Serializable, T extends Entity<PK>> 
 	
 	@Override
 	public int inserts(Collection<T> entitys){
-		judgeMapperImplement(BatchInsertMapper.class);
-		return ((BatchInsertMapper<PK,T>)getMapper()).inserts(entitys);
+		judgeMapperImplement(InsertMultipleMapper.class);
+		return ((InsertMultipleMapper<PK,T>)getMapper()).inserts(entitys);
 	}
 	
 	@Override
 	public Collection<T> insertsAndReturnId(Collection<T> entitys){
-		judgeMapperImplement(BatchInsertMapper.class);
-		long count = ((BatchInsertMapper<PK,T>)getMapper()).insertsAndReturnId(entitys);
+		int count = inserts(entitys);
 		if(count == entitys.size()) {
 			return entitys;
 		}
@@ -108,9 +103,9 @@ public abstract class ServiceAbs<PK extends Serializable, T extends Entity<PK>> 
 	}
 	
 	@Override
-	public long deleteByIds(Iterable<PK> ids) {
-		judgeMapperImplement(BatchDeleteMapper.class);
-		return ((BatchDeleteMapper<PK,T>)getMapper()).deleteByIds(ids);
+	public long deleteByIds(Collection<PK> ids) {
+		judgeMapperImplement(DeleteMultipleMapper.class);
+		return ((DeleteMultipleMapper<PK,T>)getMapper()).deleteByIds(ids);
 	}
 	
 	@Override
@@ -130,6 +125,12 @@ public abstract class ServiceAbs<PK extends Serializable, T extends Entity<PK>> 
 		judgeMapperImplement(SelectMapper.class);
 		return ((SelectMapper<PK, T>)getMapper()).selectById(pk);
 	}
+	
+	@Override
+	public List<T> selectByPKeys(Collection<PK> ids) {
+		judgeMapperImplement(SelectMapper.class);
+		return ((SelectMapper<PK, T>)getMapper()).selectByIds(ids);
+	}
 
 	@Override
 	public Page<T> queryPage(Limit limit){
@@ -142,9 +143,9 @@ public abstract class ServiceAbs<PK extends Serializable, T extends Entity<PK>> 
 	}
 	
 	@Override
-	public long count(Limit limit){
+	public long count(T entity){
 		judgeMapperImplement(CountMapper.class);
-		return ((CountMapper<PK, T>)getMapper()).count(limit);
+		return ((CountMapper<PK, T>)getMapper()).count(entity);
 	}
 	
 	/**

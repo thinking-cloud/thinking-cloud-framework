@@ -1,5 +1,8 @@
 package tcf.core.services.simple;
 
+import java.io.Serializable;
+
+import tcf.beans.entity.Entity;
 import tcf.beans.page.Limit;
 
 /**
@@ -9,12 +12,12 @@ import tcf.beans.page.Limit;
  * @date 2021年11月29日
  * @version 1.0.0
  */
-public interface CountService {
+public interface CountService<PK extends Serializable, T extends Entity<PK>> {
 	/**
 	 * 查询总数
 	 * 
 	 * @param limit 查询条件
 	 * @return 总数
 	 */
-	public <T extends Limit> long count(T limit);
+	public long count(T limit);
 }

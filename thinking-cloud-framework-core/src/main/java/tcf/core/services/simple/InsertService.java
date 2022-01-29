@@ -15,9 +15,9 @@ import tcf.beans.entity.Entity;
  */
 public interface InsertService<PK extends Serializable,T extends Entity<PK>> {
 	/**
-	 * 保存指定实体
+	 * 添加指定实体
 	 * @param entity 保存的实体
-	 * @return 保存的实体
+	 * @return 添加的实体
 	 */
 	public T insert(T entity);
 }

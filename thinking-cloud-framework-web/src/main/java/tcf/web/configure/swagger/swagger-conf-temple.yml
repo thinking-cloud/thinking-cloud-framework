@@ -1,18 +1,14 @@
 swagger:
-  docket:
-    type: api
-  base:
-    package: com.bocloud.devops
-  api:
-    title: devops-assets-manage
-    version: '1.0.0'
-    description: '简介'
-  contact:
-    name: zhouxinke
-    email: thinking-cloud-2020@outlook.com
-  headers:
-    name: token
-    description: '认证信息,与name要一一对应'
+  enable: true
+  scan-type: api
+  scan-packages: tcf.web
+  api-title: thinking-cloud-framework
+  api-version: '1.0.0'
+  api-description: '简介'
+  contact-name: zhouxinke
+  contact-email: thinking-cloud-2020@outlook.com
+  header-names: token
+  header-descriptions: '认证信息,与name要一一对应'
 thinking:
   cloud:
     filter:

@@ -16,7 +16,7 @@ import tcf.core.mapper.Mapper;
  * @date 2021年11月29日
  * @version 1.0.0
  */
-public interface BatchInsertMapper<PK extends Serializable, T extends Entity<PK>> extends Mapper<PK, T> {
+public interface InsertMultipleMapper<PK extends Serializable, T extends Entity<PK>> extends Mapper<PK, T> {
 	
 	/**
 	 * 批量保存

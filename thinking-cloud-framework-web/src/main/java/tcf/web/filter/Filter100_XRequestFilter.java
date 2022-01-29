@@ -39,9 +39,9 @@ public class Filter100_XRequestFilter extends ThinkingCloudBaseFilter {
 			ThinkingServletRequestWarpper tsrw = new ThinkingServletRequestWarpper(httpServletRequest);
 			tsrw.addHeader("x-request-id", xRequestId);
 			httpServletRequest = tsrw;
-			log.info("request-url:{} generator x-request-id:{}", url, xRequestId);
+			log.info("request-url:{} x-request-id:{} generator", url, xRequestId);
 		} else {
-			log.info("request-url:{} get x-request-id:{} ", url, xRequestId);
+			log.info("request-url:{} x-request-id:{} ", url, xRequestId);
 		}
 		// 执行
 		filterChain.doFilter(httpServletRequest, httpServletResponse);

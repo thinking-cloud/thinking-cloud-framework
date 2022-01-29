@@ -2,7 +2,6 @@ package tcf.core.services.simple;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import tcf.beans.entity.Entity;
 
@@ -15,7 +14,7 @@ import tcf.beans.entity.Entity;
  * @date 2021年11月29日
  * @version 1.0.0
  */
-public interface BatchInsertService<PK extends Serializable, T extends Entity<PK>> {
+public interface InsertMultipleService<PK extends Serializable, T extends Entity<PK>> {
 	
 	/**
 	 * 批量保存，只保存，不返回数据id
