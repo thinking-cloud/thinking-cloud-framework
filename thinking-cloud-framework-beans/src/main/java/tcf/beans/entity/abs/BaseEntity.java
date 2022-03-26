@@ -3,10 +3,8 @@ package tcf.beans.entity.abs;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
-import tcf.beans.annotation.IgnoreSwaggerParameter;
+import tcf.beans.annotation.IgnoreRequestParameter;
 import tcf.beans.entity.AuthorInfo;
 import tcf.beans.entity.Entity;
 import tcf.beans.entity.Timestamp;
@@ -25,22 +23,19 @@ public abstract class BaseEntity<PK extends Serializable,U extends Serializable>
 
 	private static final long serialVersionUID = -5208780711395858867L;
 	
-    @JsonIgnore
-    @IgnoreSwaggerParameter
+    @IgnoreRequestParameter
 	private PK id;
 
-	@IgnoreSwaggerParameter
-	@JsonIgnore
+    @IgnoreRequestParameter
 	private U createUserId ;
-    @JsonIgnore
-    @IgnoreSwaggerParameter
+    
+    @IgnoreRequestParameter
 	private Date createTime;
     
-	@IgnoreSwaggerParameter
-	@JsonIgnore
+    @IgnoreRequestParameter
 	private U lastUpdateUserId;
-    @JsonIgnore
-    @IgnoreSwaggerParameter
+    
+    @IgnoreRequestParameter
 	private Date lastUpdateTime;
     
 	public BaseEntity() { }

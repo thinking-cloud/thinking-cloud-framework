@@ -2,10 +2,8 @@ package tcf.beans.page;
 
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import io.swagger.annotations.ApiModelProperty;
-import tcf.beans.annotation.IgnoreSwaggerParameter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import tcf.beans.annotation.IgnoreRequestParameter;
 import tcf.beans.cache.ThreadLocalTables;
 
 /** 
@@ -15,6 +13,7 @@ import tcf.beans.cache.ThreadLocalTables;
  * @date 2021年11月29日
  * @version 1.0.0
  */
+@Schema(name="Limit",description = "分页查询对象")
 public interface Limit extends Serializable {
 	int DEFAULT_PAGE_N0 = 1;
 	int DEFAULT_PAGE_SIZE = 25;
@@ -57,9 +56,8 @@ public interface Limit extends Serializable {
 		ThreadLocalTables.THREADLOCAL_TOTALRECORD.set(total);
 	}
 	
-	@IgnoreSwaggerParameter
-	@JsonIgnore
-	@ApiModelProperty(value="总条数",example = "0")
+	@IgnoreRequestParameter
+	@Schema(description ="总条数",example = "0")
 	default Long getTotalRecord() {
 		return ThreadLocalTables.THREADLOCAL_TOTALRECORD.get();
 	}
@@ -68,9 +66,8 @@ public interface Limit extends Serializable {
 	 * 获取数据起始索引
 	 * @return
 	 */
-	@IgnoreSwaggerParameter
-	@JsonIgnore
-	@ApiModelProperty(value="起始索引",example = "0")
+	@IgnoreRequestParameter
+	@Schema(description ="起始索引",example = "0")
 	default int getStartIndex(){
 		return (getPageNo() - 1) * getPageSize();
 	}	

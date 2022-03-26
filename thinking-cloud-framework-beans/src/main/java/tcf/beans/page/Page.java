@@ -3,8 +3,7 @@ package tcf.beans.page;
 import java.util.LinkedList;
 import java.util.List;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
@@ -15,21 +14,21 @@ import io.swagger.annotations.ApiModelProperty;
  * @date 2021年11月29日
  * @version 1.0.0
  */
-@ApiModel(value ="Page", description = "分页对象")
+@Schema(name="Page",description = "分页数据对象")
 public class Page<T> {
 
 	private static final long serialVersionUID = -3146313205433588374L;
 	
-	@ApiModelProperty("当前页码")
+	@Schema(description = "当前页码")
 	private Integer pageNo=Limit.DEFAULT_PAGE_N0;
 
-	@ApiModelProperty("每页显示的条数")
+	@Schema(description = "每页显示的条数")
 	private Integer pageSize=Limit.DEFAULT_PAGE_SIZE;
 	
-	@ApiModelProperty("本页记录")
+	@Schema(description = "本页记录")
 	private List<T> records;
 	
-	@ApiModelProperty("总记录数")
+	@Schema(description = "总记录数")
 	private Long totalRecord;
 
 	/**

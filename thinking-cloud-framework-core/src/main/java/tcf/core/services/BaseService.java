@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import tcf.beans.entity.Entity;
 import tcf.beans.entity.Timestamp;
@@ -76,6 +79,7 @@ public abstract class BaseService<PK extends Serializable, T extends Entity<PK>>
 	}
 	
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public int inserts(Collection<T> entitys){
 		judgeMapperImplement(InsertMultipleMapper.class);
 		return ((InsertMultipleMapper<PK,T>)getMapper()).inserts(entitys);
