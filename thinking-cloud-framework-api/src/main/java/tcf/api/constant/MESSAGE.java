@@ -9,7 +9,8 @@ package tcf.api.constant;
 public enum MESSAGE {
 	SUCCESS("00"),
 	FAILURE("01"),
-	ERROR("02");
+	ERROR("02"),
+	TEST("03");
 	
 	private String code;
 	private MESSAGE(String code) {
@@ -19,5 +20,4 @@ public enum MESSAGE {
 	public String code() {
 		return this.code;
 	}
-	
 }

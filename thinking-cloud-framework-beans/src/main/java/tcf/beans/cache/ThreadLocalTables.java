@@ -2,6 +2,8 @@ package tcf.beans.cache;
 
 import java.util.Date;
 
+import javax.annotation.Resource;
+
 import lombok.extern.slf4j.Slf4j;
 /**
  * 所有 threadlocal集合

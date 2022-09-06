@@ -4,14 +4,14 @@ import com.google.gson.Gson;
 
 /**
  * Gson的工具类
- * 
+ *
  * @author think
  * @date 2021年11月29日
  * @version 1.0.0
  */
 public class GsonUtils {
 	private static final Gson gson = new Gson();
-	
+
 	/**
 	 * 将目标对象转为json字符串
 	 * @param object 目标对象
@@ -23,7 +23,7 @@ public class GsonUtils {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 将json转为指定类型
 	 * @param <T> 指定的目标类型

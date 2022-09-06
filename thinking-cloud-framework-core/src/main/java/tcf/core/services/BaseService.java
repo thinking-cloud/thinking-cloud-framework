@@ -41,9 +41,7 @@ import tcf.core.services.simple.UpdateService;
  * @param <T> 实体泛型
  * @param <PK> 主键泛型
  * @see InsertService
- * @see BatchInsertService
  * @see DeleteService
- * @see BatchDeleteService
  * @see UpdateService
  * @see SelectService
  * @see LimitService

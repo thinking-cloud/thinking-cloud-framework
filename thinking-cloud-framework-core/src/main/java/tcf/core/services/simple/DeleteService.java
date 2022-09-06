@@ -13,6 +13,14 @@ import tcf.beans.entity.Entity;
  * @version 1.0.0
  */
 public interface DeleteService<PK extends Serializable, T extends Entity<PK>> {
+
+	private int delete(int id){
+		return  id;
+	}
+
+	default int deleteById(int id){
+		return delete(id);
+	}
 	
 	/**
 	 * 根据ID，删除
@@ -28,4 +36,5 @@ public interface DeleteService<PK extends Serializable, T extends Entity<PK>> {
 	 * @return
 	 */
 	public int delete(T entity);
+
 }

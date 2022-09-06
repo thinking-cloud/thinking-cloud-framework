@@ -40,6 +40,7 @@ public class DateFormatUtils {
 	 * @return 字符串类型的日期格式
 	 */
 	public static String toString(Date date) {
+		System.out.println("flag");
 		return dateFormatString(date,DEFALUT_PATTERN);
 	}
 	
