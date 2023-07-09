@@ -6,9 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import tcf.beans.annotation.IgnoreRequestParameter;
 import tcf.beans.cache.ThreadLocalTables;
 
-/** 
+/**
  * 分页顶级接口
- * 
+ *
  * @author think
  * @date 2021年11月29日
  * @version 1.0.0
@@ -17,7 +17,7 @@ import tcf.beans.cache.ThreadLocalTables;
 public interface Limit extends Serializable {
 	int DEFAULT_PAGE_N0 = 1;
 	int DEFAULT_PAGE_SIZE = 25;
-	
+
 	/**
 	 * 获取当前页码
 	 * @return
@@ -51,11 +51,11 @@ public interface Limit extends Serializable {
 	default void setPageSize(int pageSize) {
 		ThreadLocalTables.THREADLOCAL_PAGESIZE.set(pageSize <= 0? DEFAULT_PAGE_SIZE : pageSize);
 	}
-	
+
 	default void setTotalRecord(long total) {
 		ThreadLocalTables.THREADLOCAL_TOTALRECORD.set(total);
 	}
-	
+
 	@IgnoreRequestParameter
 	@Schema(description ="总条数",example = "0")
 	default Long getTotalRecord() {
@@ -70,5 +70,5 @@ public interface Limit extends Serializable {
 	@Schema(description ="起始索引",example = "0")
 	default int getStartIndex(){
 		return (getPageNo() - 1) * getPageSize();
-	}	
+	}
 }

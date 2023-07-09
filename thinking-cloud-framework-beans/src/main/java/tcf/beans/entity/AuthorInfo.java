@@ -14,24 +14,24 @@ public interface AuthorInfo<UID extends Serializable> {
 	
 	/**
 	 * 获取创建用户id
-	 * @return
+	 * @return 用户ID
 	 */
 	public UID getCreateUserId() ;
 	/**
 	 * 设置创建用户id
-	 * @param author
+	 * @param createUserId 用户id
 	 */
 	public void setCreateUserId(UID createUserId); 
 	
 	/**
 	 * 获取最后修改用户id
-	 * @return
+	 * @return 用户ID
 	 */
 	public UID getLastUpdateUserId(); 
 	
 	/**
 	 * 设置最后修改用户id
-	 * @param updateUserId
+	 * @param updateUserId 用户ID
 	 */
 	public void setLastUpdateUserId(UID	 updateUserId);
 	

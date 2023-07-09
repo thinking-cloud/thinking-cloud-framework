@@ -104,7 +104,7 @@ public class MybatisLimitInterceptor implements Interceptor {
 	/**
 	 * 根据page对象获取对应的分页查询Sql语句，这里只做了两种数据库类型，Mysql和Oracle 其它的数据库都 没有进行分页
 	 * 
-	 * @param page 分页对象
+	 * @param limit 分页对象
 	 * @param sql  原sql语句
 	 * @return
 	 */
@@ -121,8 +121,8 @@ public class MybatisLimitInterceptor implements Interceptor {
 	/**
 	 * 给当前的参数对象page设置总记录数
 	 * 
-	 * @param page            Mapper映射语句对应的参数对象
-	 * @param mappedStatement Mapper映射语句
+	 * @param limit            Mapper映射语句对应的参数对象
+	 * @param delegate Mapper映射语句
 	 * @param connection      当前的数据库连接
 	 */
 	private long queryTotalRecord(Limit limit, StatementHandler delegate, Connection connection) {
@@ -165,29 +165,29 @@ public class MybatisLimitInterceptor implements Interceptor {
 	/**
 	 * 获取Mysql数据库的分页查询语句
 	 * 
-	 * @param page      分页对象
+	 * @param limit      分页对象
 	 * @param sqlBuffer 包含原sql语句的StringBuffer对象
 	 * @return Mysql数据库分页语句
 	 */
-	private String mysqlPageSql(Limit limi, StringBuffer sqlBuffer) {
+	private String mysqlPageSql(Limit limit, StringBuffer sqlBuffer) {
 		// 计算第一条记录的位置，Mysql中记录的位置是从0开始的。
-		int offset = (limi.getPageNo() - 1) * limi.getPageSize();
-		sqlBuffer.append(" limit ").append(offset).append(",").append(limi.getPageSize());
+		int offset = (limit.getPageNo() - 1) * limit.getPageSize();
+		sqlBuffer.append(" limit ").append(offset).append(",").append(limit.getPageSize());
 		return sqlBuffer.toString();
 	}
 
 	/**
 	 * 获取Oracle数据库的分页查询语句
 	 * 
-	 * @param page      分页对象
+	 * @param limit      分页对象
 	 * @param sqlBuffer 包含原sql语句的StringBuffer对象
 	 * @return Oracle数据库的分页查询语句
 	 */
-	private String oraclePageSql(Limit limi, StringBuffer sqlBuffer) {
+	private String oraclePageSql(Limit limit, StringBuffer sqlBuffer) {
 		// 计算第一条记录的位置，Oracle分页是通过rownum进行的，而rownum是从1开始的
-		int offset = (limi.getPageNo() - 1) * limi.getPageSize() + 1;
+		int offset = (limit.getPageNo() - 1) * limit.getPageSize() + 1;
 		sqlBuffer.insert(0, "select u.*, rownum r from (").append(") u where rownum < ")
-				.append(offset + limi.getPageSize());
+				.append(offset + limit.getPageSize());
 		sqlBuffer.insert(0, "select * from (").append(") where r >= ").append(offset);
 		// 上面的Sql语句拼接之后大概是这个样子：
 		// select * from (select u.*, rownum r from (select * from t_user) u where

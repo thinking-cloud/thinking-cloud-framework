@@ -10,19 +10,19 @@ import tcf.beans.cache.ThreadLocalTables;
 
 /**
  * 清理ThreadLocal 
- * 
+ *  TODO 遗留：请求完毕，处理ThreaLocal 问题
  * @author think
  * @Date 2021-11-30
  * @version 1.0.0
  */
-@Configuration
-@AllArgsConstructor
-@Slf4j
-public class ClearThreadLocalTables implements RequestInterceptor {
-
-	@Override
-	public void apply(RequestTemplate template) {
-		ThreadLocalTables.clear();
-		log.info("feign RequestInterceptor clear threadLocalTables success");
-	}
-}
+//@Configuration
+//@AllArgsConstructor
+//@Slf4j
+//public class ClearThreadLocalTables implements RequestInterceptor {
+//
+//	@Override
+//	public void apply(RequestTemplate template) {
+//		ThreadLocalTables.clear();
+//		log.info("feign RequestInterceptor clear threadLocalTables success");
+//	}
+//}

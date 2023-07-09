@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +36,7 @@ import tcf.core.services.simple.UpdateService;
 
 /**
  * 操作数据库的默认Service
- * 
+ *
  * @param <T> 实体泛型
  * @param <PK> 主键泛型
  * @see InsertService
@@ -50,22 +49,22 @@ import tcf.core.services.simple.UpdateService;
  * @date 2021年11月29日
  * @version 1.0.0
  */
-public abstract class BaseService<PK extends Serializable, T extends Entity<PK>> implements 
-																				InsertService<PK, T>,
-																				InsertMultipleService<PK, T>,
-																				DeleteService<PK, T>,
-																				DeleteMultipleService<PK, T>,
-																				UpdateService<PK,T>,
-																				SelectService<PK, T>,
-																				LimitService<PK,T>,
-																				CountService<PK,T>{
+public abstract class BaseService<PK extends Serializable, T extends Entity<PK>> implements
+		InsertService<PK, T>,
+		InsertMultipleService<PK, T>,
+		DeleteService<PK, T>,
+		DeleteMultipleService<PK, T>,
+		UpdateService<PK,T>,
+		SelectService<PK, T>,
+		LimitService<PK,T>,
+		CountService<PK,T>{
 
 	/**
 	 * 获取mapper接口的实现类
 	 * @return mapper接口的实现
 	 */
 	public abstract Mapper<PK,T>  getMapper();
-	
+
 	@Override
 	public T insert(T entity){
 		judgeMapperImplement(InsertMapper.class);
@@ -75,14 +74,14 @@ public abstract class BaseService<PK extends Serializable, T extends Entity<PK>>
 		}
 		return null;
 	}
-	
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public int inserts(Collection<T> entitys){
 		judgeMapperImplement(InsertMultipleMapper.class);
 		return ((InsertMultipleMapper<PK,T>)getMapper()).inserts(entitys);
 	}
-	
+
 	@Override
 	public Collection<T> insertsAndReturnId(Collection<T> entitys){
 		int count = inserts(entitys);
@@ -97,19 +96,19 @@ public abstract class BaseService<PK extends Serializable, T extends Entity<PK>>
 		judgeMapperImplement(DeleteMapper.class);
 		return ((DeleteMapper<PK,T>)getMapper()).deleteById(id);
 	}
-	
+
 	@Override
 	public int delete(T entity){
 		judgeMapperImplement(DeleteMapper.class);
 		return ((DeleteMapper<PK,T>)getMapper()).delete(entity);
 	}
-	
+
 	@Override
 	public long deleteByIds(Collection<PK> ids) {
 		judgeMapperImplement(DeleteMultipleMapper.class);
 		return ((DeleteMultipleMapper<PK,T>)getMapper()).deleteByIds(ids);
 	}
-	
+
 	@Override
 	public int update(T entity){
 		judgeMapperImplement(UpdateMapper.class);
@@ -127,7 +126,7 @@ public abstract class BaseService<PK extends Serializable, T extends Entity<PK>>
 		judgeMapperImplement(SelectMapper.class);
 		return ((SelectMapper<PK, T>)getMapper()).selectById(pk);
 	}
-	
+
 	@Override
 	public List<T> selectByPKeys(Collection<PK> ids) {
 		judgeMapperImplement(SelectMapper.class);
@@ -143,16 +142,16 @@ public abstract class BaseService<PK extends Serializable, T extends Entity<PK>>
 		page.setRecords(list);
 		return page;
 	}
-	
+
 	@Override
 	public long count(T entity){
 		judgeMapperImplement(CountMapper.class);
 		return ((CountMapper<PK, T>)getMapper()).count(entity);
 	}
-	
+
 	/**
 	 * 判断mapper实例是否实现指定的接口
-	 * 
+	 *
 	 * @param mapperInterface Mapper接口
 	 */
 	private void judgeMapperImplement(Class mapperInterface) {
