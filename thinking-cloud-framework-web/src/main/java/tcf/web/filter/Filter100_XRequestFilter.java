@@ -34,14 +34,15 @@ public class Filter100_XRequestFilter extends ThinkingCloudBaseFilter {
 		String url = httpServletRequest.getRequestURL().toString();
 		// 获取设置 xrequestid
 		String xRequestId = httpServletRequest.getHeader("x-request-id");
+		String remoteAddr = httpServletRequest.getRemoteAddr();
 		if (xRequestId == null || "".equals(xRequestId.trim())) {
 			xRequestId = UUID.randomUUID().toString();
 			ThinkingServletRequestWarpper tsrw = new ThinkingServletRequestWarpper(httpServletRequest);
 			tsrw.addHeader("x-request-id", xRequestId);
 			httpServletRequest = tsrw;
-			log.info("request-url:{} x-request-id:{} generator", url, xRequestId);
+			log.info("client-ip:{} request-url:{} x-request-id:{} generator",remoteAddr, url, xRequestId);
 		} else {
-			log.info("request-url:{} x-request-id:{} ", url, xRequestId);
+			log.info("client-ip:{} request-url:{} x-request-id:{} ", remoteAddr, url, xRequestId);
 		}
 		// 执行
 		filterChain.doFilter(httpServletRequest, httpServletResponse);
