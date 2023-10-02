@@ -63,7 +63,7 @@ public abstract class BaseService<PK extends Serializable, T extends Entity<PK>>
 	 * 获取mapper接口的实现类
 	 * @return mapper接口的实现
 	 */
-	public abstract Mapper<PK,T>  getMapper();
+	protected abstract Mapper<PK,T>  getMapper();
 
 	@Override
 	public T insert(T entity){

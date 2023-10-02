@@ -12,8 +12,8 @@ import tcf.core.mapper.simple.InsertMultipleMapper;
  * @param <PK> 主键泛型
  * @param <T> 实体泛型
  * @see NormalMapper
- * @see BatchDeleteMapper
- * @see BatchInsertMapper
+ * @see DeleteMultipleMapper
+ * @see InsertMultipleMapper
  * @author think
  * @date 2021年11月29日
  * @version 1.0.0
