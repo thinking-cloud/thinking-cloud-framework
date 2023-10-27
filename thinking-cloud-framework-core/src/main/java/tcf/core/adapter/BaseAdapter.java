@@ -3,9 +3,10 @@ package tcf.core.adapter;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 
+import tcf.beans.convert.EntityToVoConvert;
+import tcf.beans.convert.LimitToPageConvert;
 import tcf.beans.vo.VO;
-import tcf.core.converts.EntityToVoConvert;
-import tcf.core.converts.LimitToPageConvert;
+
 import tcf.utils.reflect.ReflectUtils;
 
 /**
@@ -22,7 +23,7 @@ public abstract class BaseAdapter<T extends Serializable, V extends VO<T>> {
 	 * 创建默认 实体类转VO类的Convert
 	 */
 	@SuppressWarnings("unchecked")
-	protected  EntityToVoConvert<T,V> entityConvert(){
+	protected EntityToVoConvert<T,V> entityConvert(){
 		Type[] types = ReflectUtils.genericBySuperClass(this);
 		return new EntityToVoConvert<T, V>((Class<V>)types[1]);
     }
@@ -31,7 +32,7 @@ public abstract class BaseAdapter<T extends Serializable, V extends VO<T>> {
 	 * 创建默认 Limit类转page类的Convert
 	 */
 	@SuppressWarnings("unchecked")
-	protected  LimitToPageConvert<T,V> limitConvert(){
+	protected LimitToPageConvert<T,V> limitConvert(){
 		Type[] types = ReflectUtils.genericBySuperClass(this);
     	return new LimitToPageConvert<>((Class<V>)types[1]);
 	}
