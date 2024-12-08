@@ -134,13 +134,9 @@ public abstract class BaseService<PK extends Serializable, T extends Entity<PK>>
 	}
 
 	@Override
-	public Page<T> queryPage(Limit limit){
+	public List<T> queryPage(Limit limit){
 		judgeMapperImplement(PageMapper.class);
-		List<T> list = ((PageMapper<PK,T>)getMapper()).queryPage(limit);
-		Page<T> page = new Page<>();
-		BeanUtils.copyProperties(limit, page);
-		page.setRecords(list);
-		return page;
+		return ((PageMapper<PK,T>)getMapper()).queryPage(limit);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package tcf.core.services.simple;
 
 import java.io.Serializable;
+import java.util.List;
 
 import tcf.beans.entity.Entity;
 import tcf.beans.page.Limit;
@@ -20,7 +21,7 @@ public interface LimitService<PK extends Serializable, T extends Entity<PK>> {
 	/**
 	 * 分页查询
 	 * @param limit 查询件
-	 * @return 分页对象
+	 * @return 分页数据
 	 */
-	public  <LIMIT extends Limit, PAGE extends Page<T>> PAGE queryPage(LIMIT limit);
+	public  <LIMIT extends Limit> List<T> queryPage(LIMIT limit);
 }
