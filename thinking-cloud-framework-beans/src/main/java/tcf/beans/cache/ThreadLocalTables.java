@@ -15,8 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public final class ThreadLocalTables {
 	// bo base
-	public static ThreadLocal<Integer> IDS = new ThreadLocal<>();
-	public static ThreadLocal<Integer> DATA_AUTHOR = new ThreadLocal<>();
+	public static ThreadLocal<Object> IDS = new ThreadLocal<>();
+	public static ThreadLocal<Object> DATA_AUTHOR = new ThreadLocal<>();
 	
 	// 查询
 	public static ThreadLocal<Date> CREATE_TIME_BEFORE = new ThreadLocal<>();
